@@ -111,8 +111,12 @@ while exit_check do
         print("you received: " .. "\"" .. received_message .. "\"" .. " from: " .. sender_address .. "\n")
     
     elseif selection == 4 then
+
+        print("what port do you want to use now?")
         
         selected_port = tonumber(io.read())
+
+        print("the port used to communicate is now " .. selected_port)
 
     elseif selection == 5 then 
 
