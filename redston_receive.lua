@@ -9,6 +9,14 @@ local redstone = component.redstone
 local temp0, temp1, temp2, temp3, temp4, received_message
 local reboot = computer.shutdown
 
+local clock = os.clock
+local function sleep(n)
+    local t0 = clock()
+    while clock() - t0 <= n do 
+    
+    end
+end
+
 print("from what port do you want to receive data?")
 
 local port = tonumber(io.read())
@@ -22,6 +30,8 @@ while (true) do
     if (received_message == "call") then
         
         redstone.setOutput(sides.right, 15)
+
+        sleep(1.5)
 
         redstone.setOutput(sides.right, 0)
 
