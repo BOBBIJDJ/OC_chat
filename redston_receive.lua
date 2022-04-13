@@ -31,7 +31,7 @@ while (true) do
         
         redstone.setOutput(sides.right, 15)
 
-        sleep(1.5)
+        sleep(1)
 
         redstone.setOutput(sides.right, 0)
 
