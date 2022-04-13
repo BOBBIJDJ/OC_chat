@@ -1,11 +1,13 @@
 local component = require("component")
 local sides = require("sides")
 local event = require("event")
+local computer = require("computer")
 
 local receive = event.pull
 local open_port = component.modem.open
 local redstone = component.redstone
 local temp0, temp1, temp2, temp3, temp4, received_message
+local reboot = computer.shutdown
 
 print("from what port do you want to receive data?")
 
@@ -22,6 +24,14 @@ while (true) do
         redstone.setOutput(sides.right, 15)
 
         redstone.setOutput(sides.right, 0)
+
+    elseif (received_message == "stop") then
+
+        break
+
+    elseif (received_message == "reboot") then
+
+        reboot(true)
 
     end
 
