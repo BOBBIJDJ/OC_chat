@@ -7,8 +7,6 @@ local open_port = component.modem.open
 local redstone = component.redstone
 local temp0, temp1, temp2, temp3, temp4, received_message
 
-print("to what side do you want to emit redstone?")
-
 print("from what port do you want to receive data?")
 
 local port = tonumber(io.read())
