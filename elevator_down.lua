@@ -31,7 +31,7 @@ while (true) do
 
     end
     
-    temp0, temp1, temp2, temp3, temp4, received_message = receive(3, "modem")
+    temp0, temp1, temp2, temp3, temp4, received_message = receive(0.5, "modem")
 
     if (received_message == "go_up") then
         
@@ -43,7 +43,7 @@ while (true) do
 
     elseif (received_message == "stop") then
 
-        return
+        break
 
     elseif (received_message == "reboot") then
 
