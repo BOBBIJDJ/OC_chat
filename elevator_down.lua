@@ -4,7 +4,7 @@ local event = require("event")
 local computer = require("computer")
 
 local receive = event.pull
-local open_port = component.modem.open
+local connect = component.modem
 local redstone = component.redstone
 local temp0, temp1, temp2, temp3, temp4, received_message
 local reboot = computer.shutdown
@@ -17,17 +17,17 @@ local function sleep(n)
     end
 end
 
-print("from what port do you want to receive data?")
+print("what port do you want to use?")
 
 local port = tonumber(io.read())
 
-open_port(port)
+connect.open(port)
 
 while (true) do
 
     temp0, temp1, temp2, temp3, temp4, received_message = receive("modem")
     
-    if (received_message == "call") then
+    if (received_message == "go_up") then
         
         redstone.setOutput(sides.right, 15)
 
@@ -42,6 +42,10 @@ while (true) do
     elseif (received_message == "reboot") then
 
         reboot(true)
+
+    elseif (redstone.getInput(sides.left) ~= 0) then
+
+        connect.broadcast(port, "go_down")
 
     end
 
