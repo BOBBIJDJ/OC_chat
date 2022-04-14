@@ -54,3 +54,5 @@ while (true) do
     end
 
 end
+
+connect.close(port)

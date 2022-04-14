@@ -35,11 +35,11 @@ while (true) do
 
     if (received_message == "go_down") then
         
-        redstone.setOutput(sides.right, 15)
+        redstone.setOutput(sides.left, 15)
 
         sleep(1)
 
-        redstone.setOutput(sides.right, 0)
+        redstone.setOutput(sides.left, 0)
 
     elseif (received_message == "stop") then
 
@@ -54,3 +54,5 @@ while (true) do
     end
 
 end
+
+connect.close(port)
