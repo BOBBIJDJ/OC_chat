@@ -31,7 +31,7 @@ while (true) do
 
     end
     
-    temp0, temp1, temp2, temp3, temp4, received_message = receive(3, "modem")
+    temp0, temp1, temp2, temp3, temp4, received_message = receive(1, "modem")
 
     if (received_message == "go_down") then
         
