@@ -25,8 +25,14 @@ connect.open(port)
 
 while (true) do
 
-    temp0, temp1, temp2, temp3, temp4, received_message = receive("modem")
+    if (redstone.getInput(sides.left) ~= 0) then
+
+        connect.broadcast(port, "go_up")
+
+    end
     
+    temp0, temp1, temp2, temp3, temp4, received_message = receive(3, "modem")
+
     if (received_message == "go_down") then
         
         redstone.setOutput(sides.right, 15)
@@ -37,15 +43,13 @@ while (true) do
 
     elseif (received_message == "stop") then
 
-        break
+        return
 
     elseif (received_message == "reboot") then
 
         reboot(true)
 
-    elseif (redstone.getInput(sides.left) ~= 0) then
-
-        connect.broadcast(port, "go_up")
+    else
 
     end
 
