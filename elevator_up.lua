@@ -24,16 +24,22 @@ local port = tonumber(io.read())
 connect.open(port)
 
 while (true) do
+
+    if (redstone.getInput(sides.bottom) ~= 0) then
+
+        connect.broadcast(port, "go_up")
+
+    end
     
     temp0, temp1, temp2, temp3, temp4, received_message = receive(0.5, "modem")
 
     if (received_message == "go_down") then
         
-        redstone.setOutput(sides.left, 15)
+        redstone.setOutput(sides.right, 15)
 
         sleep(1)
 
-        redstone.setOutput(sides.left, 0)
+        redstone.setOutput(sides.right, 0)
 
     elseif (received_message == "stop") then
 
