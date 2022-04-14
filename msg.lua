@@ -7,6 +7,8 @@ print("what port do you want to use?")
 
 local selected_port = tonumber(io.read())
 
+component.modem.open(selected_port)
+
 local exit_check = true
 
 while exit_check do
@@ -104,13 +106,13 @@ while exit_check do
     
     elseif (selection == 3) then
     
-        component.modem.open(selected_port)
-    
         local temp0, temp1, sender_address, temp3, temp4, received_message = event.pull("modem")
     
         print("you received: " .. "\"" .. received_message .. "\"" .. " from: " .. sender_address .. "\n")
     
     elseif selection == 4 then
+
+        component.modem.close(selected_port)
 
         print("what port do you want to use now?")
         
